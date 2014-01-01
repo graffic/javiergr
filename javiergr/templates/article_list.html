@@ -1,0 +1,24 @@
+<dl>
+{% for page in pages %}
+    <dt>
+      <a href="{{ url_for('flat_page', path=page.path) }}">{{ page.title }}</a> 
+    </dt>
+    <dd>
+      <i class="glyphicon glyphicon-calendar"></i>
+      <time datetime="{{ page.date }}">{{ page.date|l10n_date }}</time>
+      <p>{{ page.summary }}</p>
+    </dd>
+{% endfor %}
+</dl>
+<hr />
+<ul class="nav nav-pills">
+  <li {% if not current_year %}class="active"{% endif %}>
+    <a href="{{ url_for('blog') }}">All posts</a>
+  </li>
+  {% for year in years %}
+  <li {% if current_year == year%}class="active"{% endif %}>
+    <a href="{{ url_for('blog_year', year=year) }}">{{ year }}</a>
+  </li>
+  {% endfor %}
+</ul>
+

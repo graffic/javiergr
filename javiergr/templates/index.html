@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="row">
+  <div class="col-sm-6">
+    <h1 class="site-title">Javier Gonel</h1>
+    <div class="index-intro">
+      <p> I'm Javier Gonel. I'm a Software Engineer, lean "aficionado" and
+      concurrent and low level programming hobbist who enjoys solving
+      problems.</p>
+      <p>I like to share what I learn, and not only from the software industry.
+      This site serves as a platform to do it and let you know more about
+      me.</p>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <img class="img-responsive" alt="It's me!"
+        src="{{ url_for('static', filename='img/index-portrait.jpg') }}" />
+  </div>
+</div>
+
+<section id="content" class="row">
+  <div class="col-sm-6">
+
+<h2>Find me</h2>
+<div class="list-group">
+  <a class="list-group-item" href="https://github.com/graffic">
+    <i class="fa fa-github"></i> Github
+  </a>
+
+  <a class="list-group-item" href="https://twitter.com/graffic">
+    <i class="fa fa-twitter"></i> Twitter: @graffic
+  </a>
+
+  <a class="list-group-item" href="http://stackexchange.com/users/8795/graffic?tab=accounts">
+    <i class="fa fa-stack-exchange"></i> StackExchange
+  </a>
+
+  <a class="list-group-item" href="http://www.linkedin.com/in/javiergonel/en">
+    <i class="fa fa-linkedin"></i> LinkedIn
+  </a>
+  <a class="list-group-item" href="https://www.goodreads.com/user/show/19641577">
+    <b>g</b> Goodreads
+  </a>
+  <a class="list-group-item" href="http://freenode.net/irc_servers.shtml">
+    <b>IRC</b> Freenode "graffic"
+  </a>
+
+  <a class="list-group-item" href="mailto:bolibic@gmail.com">
+    <i class="fa fa-envelope"></i> bolibic@gmail.com
+  </a>
+</div>
+
+  </div>
+  <div class="col-sm-6">
+
+<h2>Last Blog posts</h2>
+  {% for page in pages %}
+    <article class="hentry">
+      <header>
+        <h3 class="entry-title">
+          <a href="{{ url_for('flat_page', path=page.path) }}" rel="bookmark" 
+              title="{{ page.title }}">{{ page.title }}</a>
+        </h3>
+      </header>
+      <footer class="title-footer"> {{ page.date|l10n_date }}</footer>
+      <div class="entry-content"> {{ page.summary }} </div>
+    </article>
+  {% endfor %}
+
+  </div>
+</section><!-- /#content -->
+{% endblock content %}

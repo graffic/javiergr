@@ -1,0 +1,176 @@
+@import "../bower_components/bootstrap/less/bootstrap.less";
+
+// Bootstrap Settings
+@font-family-sans-serif: "Open Sans", sans-serif;
+@icon-font-path: "../bower_components/bootstrap/fonts/";
+@headings-font-weight: 700;
+@font-size-base: 16px;
+@body-bg: #eaeaea;
+@container-lg: @container-desktop;
+@nav-link-padding: 10px 10px;
+
+/*
+Colors:
+Green and Orange:
+http://colorschemedesigner.com/#3h21Tw0vOw0w0
+Greys
+http://colorschemedesigner.com/#0011T006pwtwe
+*/
+
+@dark-green: #006460;
+@green: #009A97;
+@light-green: #5CCDC8;
+
+@light-orange: #FEB072;
+@orange: #FD7000;
+@dark-orange: #A54900;
+
+// More bootstrap colors
+@nav-link-hover-bg: @dark-green;
+@brand-primary: @green;
+@link-hover-color: @dark-green;
+
+
+.main-header {
+  border: none;
+  border-radius: 0px;
+  background-color: @green;
+  border-bottom: 5px solid white;
+  position: relative;
+  color: #FFF;
+  line-height: 25px;
+
+  a {
+  	color: #FFF;
+  }
+
+  &:after {
+    border-top: 5px solid #5CCDC8;
+    bottom: 0;
+    content: "";
+    left: 0;
+	height: 5px;
+    position: absolute;
+    width: 100%;
+  }
+
+  li.active {
+  	background-color: @dark-green;
+  }
+
+  .container {
+    padding: 0px;
+  }
+}
+
+.header-title {
+  background-color: #006460;
+  line-height: @line-height-computed; 
+  font-size: 1em;
+  padding: 10px;
+  margin: 0;
+}
+
+.main-header nav li {
+  float: left;
+}
+
+.main-area {
+	background-color: #eaeaea;
+}
+
+.big-divider {
+  border-top:3px solid @dark-green;
+  border-bottom:1px solid white;
+}
+
+.index-intro {
+  margin:20px 0 20px 0;
+  padding:20px 10px 20px 10px;
+  font-style: italic;
+  background-color: white;
+  box-shadow: 5px 5px 0px rgba(50, 50, 50, 0.75);
+}
+
+.title-footer {
+  font-size: @font-size-small;
+  font-style: italic;
+  margin-bottom: (@line-height-computed / 2);
+  margin-left: (@line-height-computed / 2);
+}
+
+.about-portrait {
+  margin-bottom: 20px;
+}
+
+.literal-block {
+  font-size: 0.8em;
+}
+
+.nav-pills a:hover {
+  color: white;
+}
+
+.main-footer,  {
+  border-top: 5px solid #FEB072;
+  margin-top: 15px;
+  padding-top: 15px;
+  background-color: #333;
+  color: #FFF;
+  position: relative;
+  
+  a {
+    color: #FD7000;
+  }
+
+  .container:before {
+    border-top: 5px solid #A54900;
+    top: 0;
+    content: "";
+    height: 4px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+  }
+
+  h2 {
+  	margin-top: 0;
+  }
+  .row {
+  	padding-top: @padding-large-vertical;
+  }
+}
+
+@media (min-width: @screen-sm-min) {
+  .header-title {
+  	float:left;
+	background-color: #009A97;
+  }
+}
+
+@media (min-width: @screen-md-min) {
+  @font-size-base-2: 18px;
+  body {
+    font-size: @font-size-base-2;
+  }
+
+  .about-portrait {
+  	float: right;
+	margin-left: 20px;
+  }
+
+  .title-with-company {
+    float:left
+  }
+
+  .p-with-company {
+  	clear: left;
+  }
+
+  h1, .h1 { font-size: floor(@font-size-base-2 * 2.6); }
+  h2, .h2 { font-size: floor(@font-size-base-2 * 2.15); }
+  h3, .h3 { font-size: ceil(@font-size-base-2 * 1.7); }
+  h4, .h4 { font-size: ceil(@font-size-base-2 * 2.6); }
+  h5, .h5 { font-size: @font-size-base-2; }
+  h6, .h6 { font-size: ceil(@font-size-base-2 * 0.85); }
+}

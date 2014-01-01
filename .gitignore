@@ -1,0 +1,10 @@
+# Python
+__pycache__/
+dist/
+*.egg-info/
+# Dependencies
+.webassets-cache/
+# Project specific
+javiergr/static/bower_components/
+javiergr/static/css/main.*.css
+output/

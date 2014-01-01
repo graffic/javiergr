@@ -1,0 +1,9 @@
+{% set area = 'blog' %}
+{% extends "base.html" %}
+{% block title %}Archives for {{ current_year }}{% endblock %}
+{% block content %}
+<h1>Archives for {{ current_year }}</h1>
+
+{% include "article_list.html" %}
+
+{% endblock %}
