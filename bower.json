@@ -1,0 +1,21 @@
+{
+  "name": "Javier Gonel",
+  "version": "0.0.1",
+  "authors": [
+    "Javier Gonel <bolibic@gmail.com>"
+  ],
+  "description": "javier.gr",
+  "license": "MIT",
+  "homepage": "http://javier.gr/",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.0.2"
+  }
+}
