@@ -2,6 +2,7 @@ title: Rolling back a transaction in ZODB
 date: 2013-11-21
 category: technical
 slug: rolling-back-zodb
+published: true
 summary: Different ways to roll back a transaction in ZODB using file
     storage.
 

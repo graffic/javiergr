@@ -2,6 +2,7 @@ title: This blog is powered by
 date: 2014-01-03
 category: technical
 slug: this-blog-is-powered-by
+published: true
 summary: I restarted my homepage, but this time using flask and flask freezer.
 
 After some years using [Wordpress][wordpress], and some attempts at static blog generators
