@@ -15,7 +15,7 @@ FREEZER = Freezer(APP, with_static_files=False)
 @FREEZER.register_generator
 def bootstrap_fonts():
     """Bootstrap static files included in the css"""
-    fonts_dir = os.path.join('bower_components', 'bootstrap', 'fonts')
+    fonts_dir = os.path.join('bower_components', 'bootstrap', 'dist', 'fonts')
     fonts = os.path.join(APP.static_folder, fonts_dir)
     for name in os.listdir(fonts):
         yield 'static', {'filename': os.path.join(fonts_dir, name)}
