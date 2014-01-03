@@ -2,7 +2,7 @@
 
 // Bootstrap Settings
 @font-family-sans-serif: "Open Sans", sans-serif;
-@icon-font-path: "../bower_components/bootstrap/fonts/";
+@icon-font-path: "../bower_components/bootstrap/dist/fonts/";
 @headings-font-weight: 700;
 @font-size-base: 16px;
 @body-bg: #eaeaea;
@@ -30,6 +30,9 @@ http://colorschemedesigner.com/#0011T006pwtwe
 @brand-primary: @green;
 @link-hover-color: @dark-green;
 
+h3, h4, h5, h6, .h3, .h4, .h5, .h5 {
+  color: #555
+}
 
 .main-header {
   border: none;
@@ -170,7 +173,7 @@ http://colorschemedesigner.com/#0011T006pwtwe
   h1, .h1 { font-size: floor(@font-size-base-2 * 2.6); }
   h2, .h2 { font-size: floor(@font-size-base-2 * 2.15); }
   h3, .h3 { font-size: ceil(@font-size-base-2 * 1.7); }
-  h4, .h4 { font-size: ceil(@font-size-base-2 * 2.6); }
+  h4, .h4 { font-size: ceil(@font-size-base-2 * 1.25); }
   h5, .h5 { font-size: @font-size-base-2; }
   h6, .h6 { font-size: ceil(@font-size-base-2 * 0.85); }
 }
