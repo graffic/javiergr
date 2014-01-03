@@ -1,3 +1,5 @@
+{% if page.published %}
+
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_shortname = 'javiergr';
@@ -22,4 +24,5 @@ var disqus_url = {{ (BASE_URL + url_for('flat_page', path=page.path))|tojson }};
   comments powered by
   <span class="logo-disqus">Disqus</span>
 </a>
- 
+
+{% endif %}
