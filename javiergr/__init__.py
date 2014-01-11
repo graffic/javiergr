@@ -7,11 +7,14 @@ from flask import (
     render_template,
     make_response,
     url_for,
-    abort)
+    abort,
+    g)
+from flask.helpers import safe_join, send_from_directory
 from flask_flatpages import FlatPages
 
 from javiergr.assets import register_assets
 from javiergr.zodb import FlaskZODB
+from javiergr.md_extensions import JavierExtensions
 
 APP = Flask(__name__)
 
@@ -19,6 +22,7 @@ APP.config.update(dict(
     DEBUG=True,
     FLATPAGES_ROOT='blog',
     FLATPAGES_EXTENSION='.md',
+    FLATPAGES_MARKDOWN_EXTENSIONS=['codehilite', JavierExtensions()],
     FLATPAGES_AUTO_RELOAD=True))
 
 DB = FlaskZODB(APP)
@@ -114,8 +118,18 @@ def blog_year(year):
         current_year=year)
 
 
+@APP.route('/blog/<path:path>/<string:filename>')
+def flat_page_content(path, filename):
+    """flat pages content (static) rendering"""
+    page = PAGES.get_or_404(path)
+    path = os.path.join(APP.root_path, 'blog', os.path.dirname(path))
+    return send_from_directory(path, filename)
+
+
 @APP.route('/blog/<path:path>/')
 def flat_page(path):
     """flat pages rendering"""
     page = PAGES.get_or_404(path)
+    # Configure the img link plugin
+    g.flat_page = page
     return render_template('article.html', page=page)
