@@ -34,7 +34,7 @@ class DisqusPost(OOBTree):
     def update(self, post):
         """Inserts or delete a post"""
         post_id = post['id']
-        if post_id in self and post['isDeleted']
+        if post_id in self and post['isDeleted']:
             del self[post_id]
         elif post_id not in self or post['isEdited']:
             self[post_id] = post
@@ -51,7 +51,7 @@ class DisqusThreads(OOBTree):
     def update_posts(self, posts):
         """Update posts in all threads"""
         post = None
-        for post in posts
+        for post in posts:
             reference = post['thread']['identifiers'][0]
             new_post = dict(post)
             del new_post['thread']
@@ -143,6 +143,6 @@ def update_threads(tools, disqus):
 
 def sync_posts(tools, disqus):
     since = disqus.status.since_posts
-    last_post= disqus.threads.update_posts(tools.new_posts(since))
+    last_post = disqus.threads.update_posts(tools.new_posts(since))
     if last_post is not None:
         db.disqus.status.since_posts = last_post['createdAt']
