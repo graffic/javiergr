@@ -9,16 +9,16 @@ After some years using [Wordpress][wordpress], and some attempts at static blog 
 I've switched to [Flask][flask]. If you want to know why, keep reading. If you
 just want to see the code, [click here][blogsource].
 
-First Version
--------------
+Dynamic blog generators.
+------------------------
 
-The first versions were based on [Wordpress][wordpress], but it had some things I
+The first versions were based on [Wordpress][wordpress]. It had some things I
 didn't like much:
 
 - Keeping an eye on wordpress vulnerabilities and wordpress plugin
   vulnerabilities.
-- Wordpress way of editing posts. Even for simple things I had to “fight”
-  a bit with the WYSIWYG editor to make things look like I wanted.
+- All my posts were almost the same but Wordpress way of editing posts made me
+  fight even for simple things with the WYSIWYG editor.
 - Wordpress templates are easy, but are based on what Wordpress thinks a template should be.
   You might want to organize things in another way: different problems, different solutions.
 
@@ -26,6 +26,7 @@ I could have:
 
 - Used the hosted wordpress to forget about version updates.
 - Bought a personalized wordpress template.
+- Swallow it and accept the editor (or even try a new one).
 
 It was clear for me that I wanted more control about my homepage.
 
@@ -33,10 +34,10 @@ It was clear for me that I wanted more control about my homepage.
 Static blog/page generators
 ---------------------------
 
-Static blog generators give you more control. After watching many personal
-pages moving to [Octopress][octopress]/[Jekyll][jekyll]. There are many other
-good tools like [Middleman][middleman] for full static sites and not only
-blogs.
+Static blog generators give you almost the same flexibility as dynamic ones.
+These days is common to see many blogs moved to
+[Octopress][octopress]/[Jekyll][jekyll]. And even other good tools like
+[Middleman][middleman] for full static sites.
 
 I looked for something more... python. Again, there are a lot of static site
 generators in python. I ended up trying two:
@@ -46,7 +47,7 @@ generators in python. I ended up trying two:
 
 At the time I checked [Nikola][nikola] it needed some extra plugins to do what
 I wanted but the code was clean. [Pelican][pelican] was ready to use, but code
-is a bit messy. The future of Nikola seems to have as many plugins as pelican,
+was a bit messy. The future of Nikola seems to have as many plugins as pelican,
 and the future of pelican to have as good code base as Nikola. Good projects to
 keep an eye on.
 
@@ -72,7 +73,7 @@ Flask had all the plugins I needed, and also has a “wget” plugin called free
 It is simple to use and uses jinja2 (like pelican). I had the site running with
 pelican, it took me a couple hours to move it to flask.  
 
-What are my dependencies?
+Tools:
 
 - [Flask][flask]: All the web mumbo-jumbo.
 - [Flask Flat Pages][flask-flatpages]: Use markdown files as sources
@@ -117,6 +118,23 @@ files from one bower component: bootstrap fonts.
         for name in os.listdir(fonts):
             yield 'static', {'filename': os.path.join(fonts_dir, name)}
 
+### Image handling
+
+The site needs to notify the freezer that an image in a page/post is being used.
+Images are inserted via markdown, so a [markdown plugin][imagesplugin] did the
+job by running `url_for` in each image in the markdown content.
+
+There is an extra route to serve those images from the folder containing
+the blog post.
+
+	:::python
+	@APP.route('/blog/<path:path>/<string:filename>')
+	def flat_page_content(path, filename):
+        """flat pages content (static) rendering"""
+        page = PAGES.get_or_404(path)
+        path = os.path.join(APP.root_path, 'blog', os.path.dirname(path))
+        return send_from_directory(path, filename) 
+
 
 Next steps
 ----------
@@ -150,3 +168,4 @@ The flask-ZODB plugin didn't want to work with python 3. So I created
 [flask-assets]: http://elsdoerfer.name/docs/flask-assets/
 [disqusreq]: https://github.com/disqus/disqus-python/pull/6
 [zodb-plugin]: https://github.com/graffic/javiergr/blob/master/javiergr/zodb.py
+[imagesplugin]: https://github.com/graffic/javiergr/blob/master/javiergr/md_extensions.py#L7
