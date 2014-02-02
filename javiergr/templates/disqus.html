@@ -5,7 +5,7 @@
 var disqus_shortname = 'javiergr';
 var disqus_identifier = {{ page.path|tojson }};
 var disqus_title = {{ page.title|tojson }};
-var disqus_url = {{ (BASE_URL + url_for('flat_page', path=page.path))|tojson }};
+var disqus_url = {{ (BASE_URL + url_for('blog.flat_page', path=page.path))|tojson }};
 
 /* * * DON'T EDIT BELOW THIS LINE * * */
 (function() {

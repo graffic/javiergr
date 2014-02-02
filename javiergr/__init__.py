@@ -1,5 +1,4 @@
 """javier.gr flask application"""
-from calendar import month_name
 from datetime import datetime
 from itertools import groupby
 import os.path
@@ -12,9 +11,10 @@ from flask import (
     abort,
     g)
 from flask.helpers import safe_join, send_from_directory
-from flask_flatpages import FlatPages
 
 from javiergr.assets import register_assets
+from javiergr.blog import BLOG
+from javiergr.blog_pages import register_pages
 from javiergr.zodb import FlaskZODB
 from javiergr.md_extensions import JavierExtensions
 
@@ -26,25 +26,10 @@ APP.config.update(dict(
     FLATPAGES_EXTENSION='.md',
     FLATPAGES_MARKDOWN_EXTENSIONS=['codehilite', JavierExtensions()],
     FLATPAGES_AUTO_RELOAD=True))
-
+APP.register_blueprint(BLOG, url_prefix='/blog')
 DB = FlaskZODB(APP)
-PAGES = FlatPages(APP)
 register_assets(APP)
-
-
-def years_pages(pages):
-    """Gets a list of integers with the years we have pages in"""
-    return sorted(set(page['date'].year for page in pages), reverse=True)
-
-
-def sort_pages(pages):
-    """Sort pages by date"""
-    return sorted(pages, key=lambda p: p['date'], reverse=True)
-
-
-def pages_year(pages, year):
-    """Get pages for a specific year"""
-    return sort_pages((p for p in pages if p['date'].year == year))
+register_pages(APP)
 
 
 def template_mdate(template):
@@ -75,12 +60,15 @@ def sitemap():
     urls = [
         ('/', template_mdate('index.html'), 1),
         ('/about/', template_mdate('about.html'), 0.9),
-        ('/blog/', sort_pages(PAGES)[0]['date'], 0.7)]
-    for year in years_pages(PAGES):
-        most_recent = pages_year(PAGES, year)[0]['date']
-        urls.append((url_for('blog_year', year=year), most_recent, 0.5))
-    for page in PAGES:
-        urls.append((url_for('flat_page', path=page.path), page['date'], 0.5))
+        ('/blog/', g.pages.sorted[0]['date'], 0.7)]
+    for year in g.pages.years:
+        most_recent = g.pages.by_year(year)[0]['date']
+        urls.append((url_for('blog.by_year', year=year), most_recent, 0.5))
+    for page in g.pages:
+        urls.append((
+            url_for('blog.flat_page', path=page.path),
+            page['date'],
+            0.5))
 
     # XML response
     sitemap_xml = render_template('sitemap.xml', urls=urls)
@@ -92,48 +80,10 @@ def sitemap():
 @APP.route('/')
 def index():
     """main index page"""
-    return render_template('index.html', pages=sort_pages(PAGES)[:5])
+    return render_template('index.html', pages=g.pages.sorted[:5])
 
 
 @APP.route('/about/')
 def about():
     """about page"""
     return render_template('about.html')
-
-
-@APP.route('/blog/')
-def blog():
-    """blog index page"""
-    items = sort_pages(PAGES)
-    return render_template(
-        'blog.html', pages=items[:15], years=years_pages(PAGES))
-
-
-@APP.route('/blog/<int:year>/')
-def blog_year(year):
-    """blog archive per year"""
-    items = pages_year(PAGES, year)
-    if not items:
-        abort(404)
-    # Group per month
-    months = groupby(items, lambda p: month_name[p['date'].month])
-    return render_template(
-        'blog_year.html', months=months, years=years_pages(PAGES),
-        current_year=year)
-
-
-@APP.route('/blog/<path:path>/<string:filename>')
-def flat_page_content(path, filename):
-    """flat pages content (static) rendering"""
-    page = PAGES.get_or_404(path)
-    path = os.path.join(APP.root_path, 'blog', os.path.dirname(path))
-    return send_from_directory(path, filename)
-
-
-@APP.route('/blog/<path:path>/')
-def flat_page(path):
-    """flat pages rendering"""
-    page = PAGES.get_or_404(path)
-    # Configure the img link plugin
-    g.flat_page = page
-    return render_template('article.html', page=page)
