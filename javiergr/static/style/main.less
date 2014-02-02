@@ -25,13 +25,28 @@ http://colorschemedesigner.com/#0011T006pwtwe
 @orange: #FD7000;
 @dark-orange: #A54900;
 
+@title-grey: #555;
+
 // More bootstrap colors
 @nav-link-hover-bg: @dark-green;
 @brand-primary: @green;
 @link-hover-color: @dark-green;
 
+h1 {
+  font-weight: 800;
+}
+
 h3, h4, h5, h6, .h3, .h4, .h5, .h5 {
-  color: #555
+  color: @title-grey;
+}
+
+time {
+  color: @title-grey;
+  font-size: ceil(@font-size-base * 0.85);
+}
+
+hr {
+  height: 1px;
 }
 
 .main-header {
@@ -68,7 +83,7 @@ h3, h4, h5, h6, .h3, .h4, .h5, .h5 {
 
 .header-title {
   background-color: #006460;
-  line-height: @line-height-computed; 
+  line-height: @line-height-computed;
   font-size: 1em;
   padding: 10px;
   margin: 0;
@@ -95,11 +110,11 @@ h3, h4, h5, h6, .h3, .h4, .h5, .h5 {
   box-shadow: 5px 5px 0px rgba(50, 50, 50, 0.75);
 }
 
-.title-footer {
-  font-size: @font-size-small;
-  font-style: italic;
-  margin-bottom: (@line-height-computed / 2);
-  margin-left: (@line-height-computed / 2);
+.summary-entry {
+  margin-bottom: @line-height-computed;
+  h5 {
+    margin-bottom: 0;
+  }
 }
 
 .about-portrait {
@@ -115,6 +130,7 @@ h3, h4, h5, h6, .h3, .h4, .h5, .h5 {
 }
 
 .entry-content {
+  margin-top: (@line-height-computed / 4);
   img {
     max-width: 100%;
     display: block;
@@ -130,7 +146,7 @@ h3, h4, h5, h6, .h3, .h4, .h5, .h5 {
   background-color: #333;
   color: #FFF;
   position: relative;
-  
+
   a {
     color: #FD7000;
   }

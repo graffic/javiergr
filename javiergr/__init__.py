@@ -1,5 +1,7 @@
 """javier.gr flask application"""
+from calendar import month_name
 from datetime import datetime
+from itertools import groupby
 import os.path
 
 from flask import (
@@ -113,8 +115,10 @@ def blog_year(year):
     items = pages_year(PAGES, year)
     if not items:
         abort(404)
+    # Group per month
+    months = groupby(items, lambda p: month_name[p['date'].month])
     return render_template(
-        'archives.html', pages=items, years=years_pages(PAGES),
+        'blog_year.html', months=months, years=years_pages(PAGES),
         current_year=year)
 
 

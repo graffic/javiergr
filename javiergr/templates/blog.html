@@ -2,9 +2,10 @@
 {% extends "base.html" %}
 {% block title %}Latest blog entries{% endblock %}
 {% block content %}
-<h1>Latest blog entries</h1>
-<p>The latest 15 entries to the blog</p>
+<h1>Latest blog posts</h1>
+<p>These are the latest 15 entries.</p>
 
-{% include "article_list.html" %}
+{% include "article_summary.html" %}
+{% include "article_navigation.html" %}
 
 {% endblock %}

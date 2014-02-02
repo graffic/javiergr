@@ -1,0 +1,18 @@
+{% for page in pages %}
+<article class="summary-entry">
+  <header>
+    <h5>
+      <a href="{{ url_for('flat_page', path=page.path) }}"
+          rel="bookmark" 
+          title="{{ page.title }}">
+        {{ page.title }}
+      </a>
+    </h5>
+    <time datetime="{{ page.date }}">
+      <i class="glyphicon glyphicon-calendar"></i>
+      {{ page.date|l10n_date }}
+    </time>
+  </header>
+  <div class="summary-content"> {{ page.summary }} </div>
+</article>
+{% endfor %}
