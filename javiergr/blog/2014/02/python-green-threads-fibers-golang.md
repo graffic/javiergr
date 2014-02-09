@@ -153,8 +153,8 @@ slower (87s).
 
 Using [python fibers][python-fibers] through the [offset
 library][offset-library] wasn't a very successful experiment. I was able to
-create only 1512 fibers.  Perhaps the problem is in the fibers
-library because I was getting `segmentation fault` with more than that number.
+create only 1512 fibers (well, task wrapped in fibers). With more than that I
+was rewarded with a `segmentation fault`.
 
 	:::python
 	from offset import maintask, run, go, makechan
