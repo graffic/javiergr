@@ -20,9 +20,12 @@ Let's start with two examples in go.
 
 ## Examples in go
 
-The *first* one I call it `gophers`. It's taken from a go tutorial. The idea is that many
-goroutines (like green threads) exchange messages. Each one send to the next the value it receives from
-the previous goroutine plus one. 
+The *first* one I call it `gophers`. It's taken from a go tutorial. The idea is
+that many goroutines (like green threads) exchange messages. Each one send to
+the next the value it receives from the previous goroutine plus one. 
+
+If you're new to the actor model, see how there are no callbacks just threads blocking for content
+from a channel (the `<-` symbol).
 
     :::go
     package main
@@ -52,8 +55,9 @@ the previous goroutine plus one.
 		fmt.Println(<-leftmost)
 	}
 
-The *second* example adds `IO` to the mix. It watches the output of two tail commands
-and prints their output.
+The *second* example adds `IO` to the mix. It watches the output of two tail
+commands and prints their output. Again the *goroutines* just block waiting for
+content and the main loop blocks waiting for their messages in the channel.
 
     :::go
 	package main
@@ -123,7 +127,7 @@ You can run one million of green threads quite fast (4s in my machine). I might
 add that it can do that faster than go (17s), but it won't make any justice to
 Go, just show a strong point of stackless python.
 
-The same example with [gevent][gevent] is almost the same. But it is much
+With [gevent][gevent] the code is almost the same. Unfortunately it's much
 slower (87s).
 
 	:::python
@@ -149,7 +153,7 @@ slower (87s).
 
 Using [python fibers][python-fibers] through the [offset
 library][offset-library] wasn't a very successful experiment. I was able to
-create only 1512 green threads.  Perhaps the problem here is in the fibers
+create only 1512 fibers.  Perhaps the problem is in the fibers
 library because I was getting `segmentation fault` with more than that number.
 
 	:::python
@@ -178,17 +182,18 @@ library because I was getting `segmentation fault` with more than that number.
 
 ## Adding IO
 
-The problem with the actor approach in python is that you have to make it explicit. In the previous examples there was code
-there to send messages and wait for them. If we add IO, we will need specific IO code for each library, or monkey patch (gevent)
-the existing one.
+The problem with the actor approach in python is that you have to make it
+explicit. In the previous examples there was code there to send messages and
+wait for them. If we add IO, we will need specific IO code for each library, or
+monkey patch the existing one.
 
-For stackless python I found only a library for non-blocking IO: [syncless][syncless]. It didn't work very well :(
+In stackless python I found only one library for non-blocking IO: [syncless][syncless]. It didn't work very well :(
 
-- Didn't compile in stackless python 3.3
+- Didn't compile in stackless python 3.3 so I switched to 2.7
 - Monkey patching for subprocess and popen didn't work.
 - Got random crashes.
 
-Gevent seems to be up to date and handled the problem via monkey patching:
+Gevent seems to be up to date and handled the example without any problem.
 
 	:::python
 	from gevent.subprocess import Popen, PIPE
