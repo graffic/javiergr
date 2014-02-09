@@ -1,5 +1,5 @@
 {% for page in pages %}
-<article class="summary-entry">
+<article class="h-entry summary-entry">
   <header>
     <h5>
       <a href="{{ url_for('blog.flat_page', path=page.path) }}"
@@ -8,11 +8,11 @@
         {{ page.title }}
       </a>
     </h5>
-    <time datetime="{{ page.date }}">
+    <time pdatetime="{{ page.date }}">
       <i class="glyphicon glyphicon-calendar"></i>
       {{ page.date|l10n_date }}
     </time>
   </header>
-  <div class="summary-content"> {{ page.summary }} </div>
+  <div class="p-summary summary-content">{{ page.summary }}</div>
 </article>
 {% endfor %}

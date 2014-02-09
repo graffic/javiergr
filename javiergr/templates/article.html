@@ -1,5 +1,6 @@
 {% set area = 'blog' %}
 {% extends "base.html" %}
+{% block title %}{{ page.title }}{% endblock %}
 {% block head %}
   {{ super() }}
   {% if page.keywords %}
@@ -17,17 +18,15 @@
 {% endblock %}
 
 {% block content %}
-<section>
+<section class="h-entry">
   <header>
-    <h1 class="entry-title">{{ page.title }}</h1>
+    <h1 class="p-name entry-title">{{ page.title }}</h1>
+    <time pdatetime="{{ page.date }}">
+      <i class="glyphicon glyphicon-calendar"></i>
+      {{ page.date|l10n_date }}
+    </time>
   </header>
-  <footer class="title-footer">
-    {{ page.date|l10n_date }}
-	  {% if page.modified != page.date %}
-      {{ page.modified }}
-	  {% endif %}
-  </footer><!-- /.post-info -->
-  <article class="entry-content">
+  <article class="e-content entry-content">
     {{ page }}
   </article>
   <hr class="big-divider" />

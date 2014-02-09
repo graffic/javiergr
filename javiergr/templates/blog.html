@@ -1,6 +1,6 @@
 {% set area = 'blog' %}
 {% extends "base.html" %}
-{% block title %}Latest blog entries{% endblock %}
+{% block title %}Latest blog entries {{ super() }}{% endblock %}
 {% block content %}
 <h1>Latest blog posts</h1>
 <p>These are the latest 15 entries.</p>

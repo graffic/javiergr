@@ -7,9 +7,15 @@
     <link rel="stylesheet" href="{{ SITEURL }}{{ ASSET_URL }}">
   {% endassets %}
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-  <title>{{ SITENAME }} {% block title %}{% endblock title %}</title>
+  <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
+
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+  <!--
+  <link rel="alternate" type="application/rss+xml" href="/rss.xml" title="RSS feed for javier.gr">
+  <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="ATOM feed for javier.gr">
+  -->
   {% block head %}
   {% endblock head %}
   <script>
