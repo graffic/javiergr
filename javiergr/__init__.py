@@ -80,7 +80,7 @@ def sitemap():
 @APP.route('/')
 def index():
     """main index page"""
-    return render_template('index.html', pages=g.pages.sorted[:5])
+    return render_template('index.html', pages=g.pages.sorted[:3])
 
 
 @APP.route('/about/')
