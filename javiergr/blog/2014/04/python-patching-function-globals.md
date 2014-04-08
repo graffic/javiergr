@@ -79,6 +79,8 @@ the `banana` method (using the previous example code):
 	...     inst.__defaults__, inst.__closure__)
 	>>> patched_inst()
 	('banana', 'hello')
+	>>> inst()
+	('one', 'hello')
 
 ## Summary
 
