@@ -10,3 +10,5 @@ javiergr/static/css/main.*.css
 output/
 # Mac finder
 .DS_Store
+# vim
+*.swp
