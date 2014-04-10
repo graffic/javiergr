@@ -7,10 +7,10 @@ import os
 
 from flask import Blueprint, render_template, g, send_from_directory, abort
 
-BLOG = Blueprint('blog', __name__)
+blog = Blueprint('blog', __name__)
 
 
-@BLOG.route('/')
+@blog.route('/')
 def index():
     """blog index page"""
     pages = g.pages
@@ -19,7 +19,7 @@ def index():
         'blog.html', pages=items[:15], years=pages.years)
 
 
-@BLOG.route('/<int:year>/')
+@blog.route('/<int:year>/')
 def by_year(year):
     """blog archive per year"""
 
@@ -33,15 +33,15 @@ def by_year(year):
         current_year=year)
 
 
-@BLOG.route('/<path:path>/<string:filename>')
+@blog.route('/<path:path>/<string:filename>')
 def flat_page_content(path, filename):
     """flat pages content (static) rendering"""
     g.pages.flatpages.get_or_404(path)
-    path = os.path.join(BLOG.root_path, 'blog', os.path.dirname(path))
+    path = os.path.join(blog.root_path, 'blog', os.path.dirname(path))
     return send_from_directory(path, filename)
 
 
-@BLOG.route('/<path:path>/')
+@blog.route('/<path:path>/')
 def flat_page(path):
     """flat pages rendering"""
     page = g.pages.flatpages.get_or_404(path)

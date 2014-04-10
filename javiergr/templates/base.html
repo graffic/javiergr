@@ -38,10 +38,10 @@
       <nav role="navigation">
         <ul class="nav">
           <li {% if not area %} class="active"{% endif %}>
-            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('individual.index') }}">Home</a>
           </li>
           <li {% if area == 'about' %} class="active"{% endif %}>
-            <a href="{{ url_for('about') }}">About</a>
+            <a href="{{ url_for('individual.about') }}">About</a>
           </li>
           <li {% if area == 'blog' %} class="active"{% endif %}>
             <a href="{{ url_for('blog.index') }}">Blog</a>

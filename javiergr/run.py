@@ -1,6 +1,6 @@
 """Serves the flask app"""
-from javiergr import APP
+from javiergr import app_factory
 
 
 if __name__ == '__main__':
-    APP.run()
+    app_factory().run()

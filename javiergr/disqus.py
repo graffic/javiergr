@@ -1,3 +1,8 @@
+"""
+WIP - static disqus comments
+
+Doesn't work yet.
+"""
 from BTree.OOBTree import OOBTree
 from persistent import Persistent
 
