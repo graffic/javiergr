@@ -37,7 +37,28 @@ def sitemap():
             0.5))
 
     # XML response
-    sitemap_xml = render_template('sitemap.xml', urls=urls)
-    response = make_response(sitemap_xml)
+    return xmlify('sitemap.xml', urls=urls)
+
+
+@feeds.route('/atom.xml')
+def atom():
+    """Atom XML feed"""
+    sorted_pages = g.pages.sorted
+    last_update = sorted_pages[0]['date'].isoformat() + 'T00:00:00Z'
+    pages = [(
+        page['title'],
+        url_for('blog.flat_page', path=page.path),
+        "tag:javier.gr,%s:%s" % (page['date'].isoformat(), page.path),
+        page['date'].isoformat() + 'T00:00:00Z',
+        page['summary']) for page in sorted_pages]
+
+    # XML response
+    return xmlify('atom.xml', last_update=last_update, pages=pages)
+
+
+def xmlify(template, **kwargs):
+    """Renders an XML template"""
+    xml = render_template(template, **kwargs)
+    response = make_response(xml)
     response.headers["Content-Type"] = "application/xml"
     return response

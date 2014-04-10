@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+    <title>Javier Gonel personal blog</title>
+    <link href="http://javier.gr/atom.xml" rel="self"/>
+    <link href="http://javier.gr/"/>
+    <updated>{{ last_update }}</updated>
+    <author>
+        <name>Javier Gonel</name>
+        <email>{{ CONTACT_EMAIL }}</email>
+        <uri>http://javier.gr</uri>
+    </author>
+    <id>http://javier.gr/atom.xml</id>
+    {% for page in pages %}
+    <entry>
+        <title>{{ page[0] }}</title>
+        <category term="blog" />
+        <link href="{{ BASE_URL + page[1] }}"/>
+        <id>{{ page[2] }}</id>
+        <updated>{{ page[3] }}</updated>
+        <summary>{{ page[4] }}</summary>
+    </entry>
+    {% endfor %}
+</feed>

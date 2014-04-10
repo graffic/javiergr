@@ -9,11 +9,9 @@
 
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
- 
-  <!--
-  <link rel="alternate" type="application/rss+xml" href="/rss.xml" title="RSS feed for javier.gr">
-  <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="ATOM feed for javier.gr">
-  -->
+
+  <link rel="alternate" type="application/atom+xml"
+      href="/atom.xml" title="javier.gr blog feed" />
   {% block head %}
   {% endblock head %}
   <script>
@@ -37,14 +35,14 @@
       </h2>
       <nav role="navigation">
         <ul class="nav">
-          <li {% if not area %} class="active"{% endif %}>
-            <a href="{{ url_for('individual.index') }}">Home</a>
-          </li>
           <li {% if area == 'about' %} class="active"{% endif %}>
             <a href="{{ url_for('individual.about') }}">About</a>
           </li>
           <li {% if area == 'blog' %} class="active"{% endif %}>
             <a href="{{ url_for('blog.index') }}">Blog</a>
+          </li>
+          <li>
+            <a href="{{ url_for('feeds.atom') }}"><i class="fa fa-rss"></i></a>
           </li>
         </ul>
       </nav>
