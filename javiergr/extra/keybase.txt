@@ -1,0 +1,65 @@
+==================================================================
+https://keybase.io/graffic
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://javier.gr
+  * I am graffic (https://keybase.io/graffic) on keybase.
+  * I have a public key with fingerprint D44E 1E92 061C 54D4 964F  4470 D075 45BC 53D6 9D57
+
+To claim this, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "fingerprint": "d44e1e92061c54d4964f4470d07545bc53d69d57",
+            "host": "keybase.io",
+            "key_id": "d07545bc53d69d57",
+            "uid": "99c6e6e75e3bb2f38085074924851600",
+            "username": "graffic"
+        },
+        "revoke": {
+            "sig_ids": [
+                "86052c556fd1bae7a1f4d2e2f0edeedcf26da38175ec04cf0f5cacf59f3b3c260f"
+            ]
+        },
+        "service": {
+            "hostname": "javier.gr",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1414085579,
+    "expire_in": 157680000,
+    "prev": "af98a3e418f8a91e4400480fae6e6d04e6fe08d53dc49a0c83d75ae9cf11e929",
+    "seqno": 6,
+    "tag": "signature"
+}
+
+with the aforementioned key, yielding the PGP signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: GnuPG v2
+
+owFlkkFrFDEUx6dV27oouAc/QEMLiktJZpJMMkI9edBSLwqK0l0yycs0rc6sM7Nr
+a+ndgwcvggg9exD0olDUb9CLJ0EPehP02oMnxWSpJ3MJefnn93/v5T05fSya634c
+Xf5w/dPezamDH3l048rF7zsor8w2ynbQJkw268oC6mHtyhZlyFAKBGSMOdGMGio5
+tZSm2OCUUZZrlhguDUtRD61XTXjhMblqYMlVPuYPA2cC53/9aHIhpebAIWWQ5Hls
+E4EFwymVMRWMcIyDsIG6VPfAq4taWes02u2hGsbVJoSMG1d4kwZld5DgmMWaMW4N
+yRWkilhqYogtBgNgtI25UYkg3k5jqi22TCttmbRJnuiYY4vWPNsbjp2ewENVR+Yb
+auygXipqn9OwrtpKV3d9eL1th1nIqN0eBtkDyAdHgEHuSuP76R+MoW5cVaKMeKVu
+XSASSqgvl6Wyh2Br6GoYuKBgKRfYr2ADY49UVgqVACXCCiUJUIoxFdgq3zluMAVu
+AQvjm6upVFiLxKRMgdSWhM+TKJR0v6xQxn2aqvDIxnWKUrWjGtBu51H/eNSdi2ZO
+TPuR+Bl1Tp75Nyevr05Fb6fP/VpbPN9//PIN9N2XW9dmRuXWwvLei4qu9OZXaPTn
+wv7B51X76tl+9+mp54vvfp/tL8yuXurlXw+Xbx9+e/j+Lw==
+=XueE
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/graffic
+
+==================================================================
