@@ -9,8 +9,10 @@ setup(
     author_email='bolibic@gmail.com',
     url='http://javier.gr/',
     install_requires = [
-        'Flask==0.10.1',
-        'Flask-Assets==0.9.dev',
-        'Flask-FlatPages==0.5',
-        'Frozen-Flask==0.11']
+        'Flask',
+        'Flask-Assets',
+        'Flask-FlatPages',
+        'Frozen-Flask',
+        'Pygments'
+    ]
 )

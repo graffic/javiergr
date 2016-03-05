@@ -16,6 +16,7 @@ def app_factory(extra_config=None):
     # App defaults
     app.config.update(dict(
         DEBUG=True,
+        CLEANCSS_EXTRA_ARGS=['--skip-rebase'],
         FLATPAGES_ROOT='blog',
         FLATPAGES_EXTENSION='.md',
         FLATPAGES_MARKDOWN_EXTENSIONS=['codehilite', JavierExtensions()],
