@@ -15,3 +15,5 @@ output/
 .DS_Store
 # vim
 *.swp
+# VSCode
+.vscode

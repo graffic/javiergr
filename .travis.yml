@@ -1,0 +1,12 @@
+languages: python
+install:
+  - yarn
+  - pip -e .
+script:
+  - python javiergr/freezer.py
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  on:
+    branch: master

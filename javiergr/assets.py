@@ -29,8 +29,9 @@ def register_assets(app):
     assets.register('css', bundle)
     app.add_url_rule(
         '/static/fonts/bootstrap/<path:filename>',
-        'bootstra_fonts',
+        'bootstrap_fonts',
         bootstrap_fonts)
+
 
 def bootstrap_fonts(filename):
     # It will do: os.path.join(current_app.root_path, filename)
