@@ -6,7 +6,7 @@ before_install:
   - npm install -g yarn
 install:
   - yarn
-  - pip install -e .
+  - pip install --process-dependency-links -e .
 before_script:
   - export PATH=$PATH:$PWD/node_modules/.bin
 script:
