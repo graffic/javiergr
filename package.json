@@ -1,0 +1,14 @@
+{
+  "name": "javiergr",
+  "version": "1.0.0",
+  "description": "Javier Gonel website",
+  "main": "index.js",
+  "repository": "git@github.com:graffic/javiergr.git",
+  "author": "Javier Gonel <bolibic@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "bootstrap": "^3.3.7",
+    "clean-css-cli": "^4.0.8",
+    "less": "^2.7.2"
+  }
+}

@@ -9,7 +9,6 @@ node_modules
 # Dependencies
 .webassets-cache/
 # Project specific
-javiergr/static/bower_components/
 javiergr/static/css/main.*.css
 output/
 # Mac finder

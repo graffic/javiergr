@@ -1,7 +1,8 @@
 """Webassets configuration and handling"""
 import os.path
 
-from flask.ext.assets import Environment, Bundle
+from flask import send_from_directory
+from flask_assets import Environment, Bundle
 from pygments.formatters import HtmlFormatter
 
 
@@ -26,3 +27,12 @@ def register_assets(app):
                     filters='less,cleancss',
                     output='css/main.%(version)s.css')
     assets.register('css', bundle)
+    app.add_url_rule(
+        '/static/fonts/bootstrap/<path:filename>',
+        'bootstra_fonts',
+        bootstrap_fonts)
+
+def bootstrap_fonts(filename):
+    # It will do: os.path.join(current_app.root_path, filename)
+    return send_from_directory(
+        '../node_modules/bootstrap/fonts/', filename)
