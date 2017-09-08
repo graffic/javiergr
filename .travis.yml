@@ -7,6 +7,8 @@ before_install:
 install:
   - yarn
   - pip install -e .
+before_script:
+  - export PATH=$PATH:$PWD/node_modules/.bin
 script:
   - python javiergr/freezer.py
 deploy:
