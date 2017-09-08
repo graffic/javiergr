@@ -1,4 +1,9 @@
-languages: python
+language: python
+before_install:
+  - . $HOME/.nvm/nvm.sh
+  - nvm install stable
+  - nvm use stable
+  - npm install -g yarn
 install:
   - yarn
   - pip -e .
@@ -8,5 +13,7 @@ deploy:
   provider: pages
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
+  local_dir: output
+  fqdn: javier.gr
   on:
     branch: master
