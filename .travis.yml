@@ -6,7 +6,7 @@ before_install:
   - npm install -g yarn
 install:
   - yarn
-  - pip -e .
+  - pip install -e .
 script:
   - python javiergr/freezer.py
 deploy:
