@@ -16,6 +16,6 @@ setup(
         'Pygments'
     ],
     dependency_links = [
-        'https://github.com/miracle2k/webassets/tarball/master#egg=webassets-0.12.1'
+        'https://github.com/miracle2k/webassets/tarball/master#egg=webassets-0.12.2'
     ]
 )
