@@ -2,7 +2,7 @@ title: Automation
 date: 2017-09-09
 category: technical
 published: true
-summary: Why do you automate?
+summary: Automating all the small things.
 
 Last night I decided to automate [this blog](https://github.com/graffic/javiergr). So when I commit, [Travis](https://travis-ci.org/graffic/javiergr) then builds and uploads it to [GitHub pages](https://pages.github.com). This is not something new. GitHub [does exactly that](https://help.github.com/articles/using-jekyll-as-a-static-site-generator-with-github-pages/) for you if you use [Jekyll](https://jekyllrb.com). Also, at work, everything is automated, and if something isn't it feels weird.
 

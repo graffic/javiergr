@@ -16,6 +16,8 @@ deploy:
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
   local_dir: output
+  repo: graffic.github.io
+  target_branch: master
   fqdn: javier.gr
   on:
     branch: master
