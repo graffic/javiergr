@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  {% assets 'css' %}
+  {% assets 'css' -%}
     <link rel="stylesheet" href="{{ SITEURL }}{{ ASSET_URL }}">
-  {% endassets %}
+  {%- endassets %}
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
   <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
 
