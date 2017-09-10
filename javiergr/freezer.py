@@ -1,6 +1,7 @@
 """Flask freezer setup and script"""
 from functools import partial
 from os.path import join
+from datetime import datetime
 import os
 import shutil
 
@@ -15,7 +16,6 @@ def bootstrap_fonts(app):
     for name in os.listdir(fonts):
         yield 'bootstrap_fonts', {'filename': name}
 
-
 def copy_extra(freezer):
     """Copy files from extra folder to the root"""
     extra_path = join(freezer.app.root_path, 'extra')
@@ -24,10 +24,13 @@ def copy_extra(freezer):
         dst = join(freezer.root, item)
         shutil.copyfile(src, dst)
 
+def freezer_template_context():
+    return dict(FREEZE_DATE=datetime.utcnow().isoformat())
 
 def freeze():
     """Prepare and run the freezer"""
-    app = app_factory({'FREEZER_DESTINATION': '../output'})
+    app = app_factory({'FREEZER_DESTINATION': join('..', 'output')})
+    app.context_processor(freezer_template_context)
     freezer = Freezer(app, with_static_files=False)
     freezer.register_generator(partial(bootstrap_fonts, app))
     freezer.freeze()

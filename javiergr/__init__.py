@@ -41,6 +41,7 @@ def app_factory(extra_config=None):
 def template_settings():
     """Extra template globals/context"""
     return dict(
+        FREEZE_DATE='live server',
         CONTACT_EMAIL='bolibic@gmail.com',
         BASE_URL='http://javier.gr')
 
