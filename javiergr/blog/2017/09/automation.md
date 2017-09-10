@@ -1,6 +1,6 @@
 title: Automation
 date: 2017-09-09
-category: technical
+category: lean
 published: true
 summary: Automating all the small things.
 
