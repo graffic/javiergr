@@ -1,8 +1,8 @@
 """Flask freezer setup and script"""
 from functools import partial
+from os import listdir
 from os.path import join
 from datetime import datetime
-import os
 import shutil
 
 from flask_frozen import Freezer
@@ -13,18 +13,19 @@ from javiergr import app_factory
 def bootstrap_fonts(app):
     """Bootstrap static files included in the css"""
     fonts = join(app.root_path, '..', 'node_modules', 'bootstrap', 'fonts')
-    for name in os.listdir(fonts):
+    for name in listdir(fonts):
         yield 'bootstrap_fonts', {'filename': name}
 
 def copy_extra(freezer):
     """Copy files from extra folder to the root"""
     extra_path = join(freezer.app.root_path, 'extra')
-    for item in os.listdir(extra_path):
+    for item in listdir(extra_path):
         src = join(extra_path, item)
         dst = join(freezer.root, item)
         shutil.copyfile(src, dst)
 
 def freezer_template_context():
+    """Extra content for freezed pages"""
     return dict(FREEZE_DATE=datetime.utcnow().isoformat())
 
 def freeze():

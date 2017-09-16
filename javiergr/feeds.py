@@ -1,3 +1,6 @@
+"""
+Blueprint for sitemap and atom feeds
+"""
 from datetime import datetime
 import os
 
@@ -9,7 +12,7 @@ from flask import (
     render_template,
     url_for)
 
-feeds = Blueprint('feeds', __name__)
+FEEDS = Blueprint('feeds', __name__)
 
 
 def template_mdate(template):
@@ -19,7 +22,7 @@ def template_mdate(template):
     return datetime.fromtimestamp(mtime)
 
 
-@feeds.route('/sitemap.xml')
+@FEEDS.route('/sitemap.xml')
 def sitemap():
     """Builds a sitemap with all pages and flat-pages"""
     # Gather urls
@@ -40,7 +43,7 @@ def sitemap():
     return xmlify('sitemap.xml', urls=urls)
 
 
-@feeds.route('/atom.xml')
+@FEEDS.route('/atom.xml')
 def atom():
     """Atom XML feed"""
     sorted_pages = g.pages.sorted

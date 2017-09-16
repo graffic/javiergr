@@ -6,7 +6,7 @@ from flask import g, url_for
 from markdown.treeprocessors import Treeprocessor
 from markdown.extensions import Extension
 
-
+# pylint: disable=too-few-public-methods
 class LocalImages(Treeprocessor):
     """
     Use url_for for images local to the flat_page

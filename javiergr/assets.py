@@ -3,6 +3,7 @@ import os.path
 
 from flask import send_from_directory
 from flask_assets import Environment, Bundle
+# pylint: disable=no-name-in-module
 from pygments.formatters import HtmlFormatter
 
 
@@ -34,6 +35,7 @@ def register_assets(app):
 
 
 def bootstrap_fonts(filename):
+    "Sends bootstrap font files"
     # It will do: os.path.join(current_app.root_path, filename)
     return send_from_directory(
         '../node_modules/bootstrap/fonts/', filename)

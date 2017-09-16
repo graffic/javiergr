@@ -2,10 +2,10 @@
 from flask import Flask
 
 from javiergr.assets import register_assets
-from javiergr.blog import blog
+from javiergr.blog import BLOG
+from javiergr.feeds import FEEDS
+from javiergr.individual import INDIVIDUAL
 from javiergr.blog_pages import register_pages
-from javiergr.feeds import feeds
-from javiergr.individual import individual
 from javiergr.md_extensions import JavierExtensions
 
 
@@ -26,9 +26,9 @@ def app_factory(extra_config=None):
         app.config.update(extra_config)
 
     # Blueprints
-    app.register_blueprint(blog, url_prefix='/blog')
-    app.register_blueprint(individual)
-    app.register_blueprint(feeds)
+    app.register_blueprint(BLOG, url_prefix='/blog')
+    app.register_blueprint(INDIVIDUAL)
+    app.register_blueprint(FEEDS)
 
     # Other configuration
     app.context_processor(template_settings)
